@@ -9,7 +9,51 @@
 package com.ulewo.easyjava.bean;
 
 import java.util.List;
-
+/**
+ * 一张表，例如user表
+ * tableName=user,
+ * beanName=User, 
+ * beanParamName=UserQuery, 
+ * comment=, 
+ * columnList=[
+ * 	ColumnInfo [
+ * 		columnName=id, 
+ * 		propertyName=id, 
+ * 		type=Integer, 
+ * 		comment=, 
+ * 		isAutoIncrement=false, 
+ * 		isPrimaryKey=true, 
+ * 		isUniqueKey=false], 
+ * 	ColumnInfo [
+ * 		columnName=name, 
+ * 		propertyName=name, 
+ * 		type=String, 
+ * 		comment=, 
+ * 		isAutoIncrement=false, 
+ * 		isPrimaryKey=null, 
+ * 		isUniqueKey=false], 
+ * 	ColumnInfo [
+ * 		columnName=price, 
+ * 		propertyName=price, 	
+ * 		type=java.math.BigDecimal, 
+ * 		comment=, 
+ * 		isAutoIncrement=false, 
+ * 		isPrimaryKey=null, 
+ * 		isUniqueKey=false], 
+ * 	ColumnInfo [
+ * 		columnName=age, 
+ * 		propertyName=age, 
+ * 		type=Integer, 
+ * 		comment=, 
+ * 		isAutoIncrement=false, 
+ * 		isPrimaryKey=null, 
+ * 		isUniqueKey=false]
+ * 	]
+ * ]
+ * 
+ * @author Administrator
+ *
+ */
 public class DataTableInfo {
     /**
      * 表名
@@ -75,5 +119,13 @@ public class DataTableInfo {
     public void setBeanParamName(String beanParamName) {
         this.beanParamName = beanParamName;
     }
+
+	@Override
+	public String toString() {
+		return "DataTableInfo [tableName=" + tableName + ", beanName=" + beanName + ", beanParamName=" + beanParamName
+				+ ", comment=" + comment + ", columnList=" + columnList + "]";
+	}
+    
+    
 
 }

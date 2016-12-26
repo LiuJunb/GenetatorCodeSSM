@@ -24,8 +24,15 @@ import java.util.List;
 public class MainApp {
 
 	public static void main(String[] args) {
+		/**
+		 * 获取总的表数：DataTableInfo
+		 */
 		List<DataTableInfo> tableList = ReadTable.readTable();
+		/**
+		 * 处理每一张表，例如:User
+		 */
 		for (DataTableInfo table : tableList) {
+//			System.out.println(table.toString());
 			BuildFramework.initFramwork(table);
 			//创建bean
 			BuildBean.buildEntityBean(table);

@@ -84,6 +84,10 @@ public class ReadTable {
 		}
 	}
 
+	/**
+	 * 读取数据库
+	 * @return
+	 */
 	public static List<DataTableInfo> readTable() {
 		List<DataTableInfo> tableList = new ArrayList<DataTableInfo>();
 		PreparedStatement pstate = null;
@@ -94,13 +98,14 @@ public class ReadTable {
 			results = pstate.executeQuery();
 			//获取表信息
 			while (results.next()) {
-				String tableName = results.getString("NAME");
-				String comment = results.getString("COMMENT");
+				String tableName = results.getString("NAME");//获取表名
+				String comment = results.getString("COMMENT");//获取表的说明
+				//新建一张表
 				DataTableInfo info = new DataTableInfo();
-				info.setTableName(tableName);
+				info.setTableName(tableName);//表名
 				String beanName = processField(tableName);
 				beanName = beanName.substring(0, 1).toUpperCase() + beanName.substring(1);
-				info.setBeanName(beanName);
+				info.setBeanName(beanName);//表名
 				info.setBeanParamName(beanName + Constants.SUFFIX_BEAN_PARAM);
 				info.setComment(comment);
 				List<ColumnInfo> columnList = new ArrayList<ColumnInfo>();
@@ -111,10 +116,10 @@ public class ReadTable {
 				clumnResult = pstate.executeQuery();
 				while (clumnResult.next()) {
 					ColumnInfo columnInfo = new ColumnInfo();
-					columnInfo.setColumnName(clumnResult.getString("FIELD"));
-					columnInfo.setPropertyName(processField(clumnResult.getString("FIELD")));
-					columnInfo.setType(processType(clumnResult.getString("TYPE")));
-					columnInfo.setComment(clumnResult.getString("COMMENT"));
+					columnInfo.setColumnName(clumnResult.getString("FIELD"));//获取某一列的名称
+					columnInfo.setPropertyName(processField(clumnResult.getString("FIELD")));//获取列属性的名
+					columnInfo.setType(processType(clumnResult.getString("TYPE")));//获取列的  类型
+					columnInfo.setComment(clumnResult.getString("COMMENT"));//获取列的说明
 					//判断是否是自增长
 					if (AUTO_INCREMENT.equals(clumnResult.getString("EXTRA"))) {
 						columnInfo.setIsAutoIncrement(true);

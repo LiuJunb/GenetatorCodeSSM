@@ -115,4 +115,13 @@ public class ColumnInfo implements Comparable<ColumnInfo> {
         }
     }
 
+	@Override
+	public String toString() {
+		return "ColumnInfo [columnName=" + columnName + ", propertyName=" + propertyName + ", type=" + type
+				+ ", comment=" + comment + ", isAutoIncrement=" + isAutoIncrement + ", isPrimaryKey=" + isPrimaryKey
+				+ ", isUniqueKey=" + isUniqueKey + "]";
+	}
+    
+    
+
 }

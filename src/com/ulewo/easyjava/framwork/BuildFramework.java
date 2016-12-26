@@ -94,6 +94,16 @@ public class BuildFramework {
 			in = new FileInputStream(new File("src/" + framworkPath.replace(".", "/") + "/" + fileName + ".txt"));
 			inr = new InputStreamReader(in, "utf-8");
 			bf = new BufferedReader(inr);
+			/**
+			 *  package com.liujun.service;
+
+				import java.util.List;
+		
+				import com.liujun.entity.query.UserQuery;
+				import com.liujun.entity.po.User;
+				import com.liujun.entity.vo.PaginationResult;
+
+			 */
 			for (String str : headInfoList) {
 				bw.write(str + ";");
 				bw.newLine();

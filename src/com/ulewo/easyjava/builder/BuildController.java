@@ -81,7 +81,10 @@ public class BuildController {
 			paramService = paramService.substring(0, 1).toLowerCase() + paramService.substring(1);
 			bw.write("\tprivate " + tableInfo.getBeanName() + Constants.SUFFIX_SERVICE + " " + paramService + ";");
 			bw.newLine();
-			//分页查询的方法
+			/**
+			 * 分页查询的方法
+			 * findUserListByPage
+			 */
 			bw = BuildComment.buildMethodComment(bw, "分页查询方法");
 			bw.newLine();
 			String methodName = "find" + tableInfo.getBeanName() + "ListByPage";
@@ -103,6 +106,30 @@ public class BuildController {
 			bw.newLine();
 			bw.write("\t}");
 			bw.newLine();
+			
+			/**
+			 * 查找用户
+			 * findUserById
+			 */
+			bw = BuildComment.buildMethodComment(bw, "查找用户方法");
+			bw.newLine();
+			String methodName2 = "find" + tableInfo.getBeanName() + "ById";
+			bw.write("\t@RequestMapping(\"/" + methodName2 + ".do\")");
+			bw.newLine();
+			bw.write("\t@ResponseBody()");
+			bw.newLine();
+			bw.write("\tpublic String  " + methodName2 + "(Integer id) {");
+			bw.newLine();
+			
+			bw.write("\t\t"+tableInfo.getBeanName()+" user ="+"this."+paramService+"."+methodName2+"( id );");
+			bw.newLine();
+			
+			bw.write("\t\treturn user.toString();");
+			bw.newLine();
+			bw.write("\t}");
+			bw.newLine();
+			
+			
 			bw.write("}");
 			bw.flush();
 		} catch (Exception e) {

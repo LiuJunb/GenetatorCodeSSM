@@ -42,6 +42,13 @@ public class BuildComment {
 		return bw;
 	}
 
+	/**
+	 * 生成注释
+	 * @param bw
+	 * @param text
+	 * @return
+	 * @throws IOException
+	 */
 	public static BufferedWriter buildPropertyComment(BufferedWriter bw, String text) throws IOException {
 		bw.newLine();
 		bw.write("\t/**");

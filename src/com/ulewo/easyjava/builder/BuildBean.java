@@ -29,6 +29,10 @@ import com.ulewo.easyjava.utils.Constants;
  */
 public class BuildBean {
 
+	/**
+	 * 创建bean
+	 * @param tableInfo
+	 */
 	public static void buildEntityBean(DataTableInfo tableInfo) {
 
 		File folder = new File(Constants.PATH_BEAN);
@@ -41,6 +45,9 @@ public class BuildBean {
 		BufferedWriter bw = null;
 
 		try {
+			/**
+			 * 导包
+			 */
 			out = new FileOutputStream(beanFile);
 			outw = new OutputStreamWriter(out, "utf-8");
 			bw = new BufferedWriter(outw);
@@ -58,14 +65,21 @@ public class BuildBean {
 			bw.newLine();
 			List<ColumnInfo> columnList = tableInfo.getColumnList();
 
+			/**
+			 * 生成属性
+			 */
 			for (ColumnInfo columnInfo : columnList) {
+				//生成注释
 				BuildComment.buildPropertyComment(bw, columnInfo.getComment());
 				bw.newLine();
 				bw.write("\tprivate " + columnInfo.getType() + " " + columnInfo.getPropertyName() + ";");
 				bw.newLine();
 			}
 			bw.newLine();
-			// 生成get 和 set方法
+			
+			/**
+			 *  生成get 和 set方法
+			 */
 			String tempField = null;
 			for (ColumnInfo columnInfo : columnList) {
 				tempField = columnInfo.getPropertyName().substring(0, 1).toUpperCase()
@@ -88,7 +102,9 @@ public class BuildBean {
 			}
 
 			bw.newLine();
-			//重写toString方法
+			/**
+			 * 重写toString方法
+			 */
 			bw.write("\tpublic String toString (){");
 			StringBuilder tostringStr = new StringBuilder();
 			for (ColumnInfo columnInfo : columnList) {
