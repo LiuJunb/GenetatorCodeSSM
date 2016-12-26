@@ -111,23 +111,23 @@ public class BuildController {
 			 * 查找用户
 			 * findUserById
 			 */
-			bw = BuildComment.buildMethodComment(bw, "查找用户方法");
-			bw.newLine();
-			String methodName2 = "find" + tableInfo.getBeanName() + "ById";
-			bw.write("\t@RequestMapping(\"/" + methodName2 + ".do\")");
-			bw.newLine();
-			bw.write("\t@ResponseBody()");
-			bw.newLine();
-			bw.write("\tpublic String  " + methodName2 + "(Integer id) {");
-			bw.newLine();
-			
-			bw.write("\t\t"+tableInfo.getBeanName()+" user ="+"this."+paramService+"."+methodName2+"( id );");
-			bw.newLine();
-			
-			bw.write("\t\treturn user.toString();");
-			bw.newLine();
-			bw.write("\t}");
-			bw.newLine();
+//			bw = BuildComment.buildMethodComment(bw, "查找用户方法");
+//			bw.newLine();
+//			String methodName2 = "find" + tableInfo.getBeanName() + "ById";
+//			bw.write("\t@RequestMapping(\"/" + methodName2 + ".do\")");
+//			bw.newLine();
+//			bw.write("\t@ResponseBody()");
+//			bw.newLine();
+//			bw.write("\tpublic String  " + methodName2 + "(Integer id) {");
+//			bw.newLine();
+//			
+//			bw.write("\t\t"+tableInfo.getBeanName()+" user ="+"this."+paramService+"."+methodName2+"( id );");
+//			bw.newLine();
+//			
+//			bw.write("\t\treturn user.toString();");
+//			bw.newLine();
+//			bw.write("\t}");
+//			bw.newLine();
 			
 			
 			bw.write("}");
